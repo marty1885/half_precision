@@ -3,7 +3,9 @@
 // Do software conversion if not on Aarch64(ARM64). Otherwise GCC and clang
 // supports fp16 nativelly.
 #ifndef __aarch64__
-#include "fp16.h"
+	#include "fp16.h"
+#endif
+
 #include <cstdint>
 #include <type_traits>
 #include <numeric>
@@ -16,14 +18,20 @@ struct half
 {
 
 	half() = default;
-	half(float v) : storage_(fp16_ieee_from_fp32_value(v)) {}
 
-	operator float() const
-	{
-		return fp16_ieee_to_fp32_value(storage_);
-	}
+	#ifndef __aarch64__
+	half(float v) : storage_(fp16_ieee_from_fp32_value(v)) {}
+	operator float() const { return fp16_ieee_to_fp32_value(storage_); }
 
 	uint16_t storage_;
+	#else
+	half(float v) : storage_(v) {}
+	operator float() const { return storage_; }
+
+	__fp16 storage_;
+	#endif
+
+
 };
 
 template <typename T>
@@ -42,7 +50,11 @@ auto convert_native_type(T v)
 	using type = std::conditional_t<std::is_same_v<T, half>, float, T>;
 	type res;
 	if constexpr(std::is_same_v<T, half>)
+		#ifndef __aarch64__
 		res = fp16_ieee_to_fp32_value(v.storage_);
+		#else
+		res = v.storage_;
+		#endif
 	else
 		res = v;
 	return res;
@@ -303,11 +315,4 @@ inline half operator/=(half& self, T other)
 
 }
 
-#else
 
-namespace half_precision
-{
-	using half = __fp16;
-}
-
-#endif
