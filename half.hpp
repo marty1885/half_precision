@@ -1,5 +1,8 @@
 #pragma once
 
+// Do software conversion if not on Aarch64(ARM64). Otherwise GCC and clang
+// supports fp16 nativelly.
+#ifndef __aarch64__
 #include "fp16.h"
 #include <cstdint>
 #include <type_traits>
@@ -299,3 +302,12 @@ inline half operator/=(half& self, T other)
 }
 
 }
+
+#else
+
+namespace half_precision
+{
+	using half = __fp16;
+}
+
+#endif
