@@ -60,12 +60,12 @@ auto generic_half_operation(T1 self, T2 other, Op op)
 }
 
 // Uniary operators
-half operator -(half self)
+inline half operator -(half self)
 {
 	return half(-1.f*self);
 }
 
-half operator +(half self)
+inline half operator +(half self)
 {
 	return self;
 }
