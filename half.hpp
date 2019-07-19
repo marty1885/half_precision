@@ -72,176 +72,176 @@ half operator +(half self)
 
 // Binary operations
 
-auto operator +(half self, half other)
+inline auto operator +(half self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a+b;});
 }
 
-auto operator -(half self, half other)
+inline auto operator -(half self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a-b;});
 }
 
-auto operator *(half self, half other)
+inline auto operator *(half self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a*b;});
 }
 
-auto operator /(half self, half other)
+inline auto operator /(half self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a/b;});
 }
 
 template <typename T>
-auto operator +(half self, T other)
+inline auto operator +(half self, T other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a+b;});
 }
 
 template <typename T>
-auto operator -(half self, T other)
+inline auto operator -(half self, T other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a-b;});
 }
 
 template <typename T>
-auto operator *(half self, T other)
+inline auto operator *(half self, T other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a*b;});
 }
 
 template <typename T>
-auto operator /(half self, T other)
+inline auto operator /(half self, T other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a/b;});
 }
 
 template <typename T>
-auto operator +(T self, half other)
+inline auto operator +(T self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a+b;});
 }
 
 template <typename T>
-auto operator -(T self, half other)
+inline auto operator -(T self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a-b;});
 }
 
 template <typename T>
-auto operator *(T self, half other)
+inline auto operator *(T self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a*b;});
 }
 
 template <typename T>
-auto operator /(T self, half other)
+inline auto operator /(T self, half other)
 {
 	return generic_half_operation(self, other, [](auto a, auto b){return a/b;});
 }
 
 // Base comparsion operators
 
-bool operator <(half self, half other)
+inline bool operator <(half self, half other)
 {
 	return (float)self < (float)other;
 }
 
-bool operator >(half self, half other)
+inline bool operator >(half self, half other)
 {
 	return (float)self > (float)other;
 }
 
-bool operator ==(half self, half other)
+inline bool operator ==(half self, half other)
 {
 	return (float)self == (float)other;
 }
 
 template <typename T>
-bool operator <(half self, T other)
+inline bool operator <(half self, T other)
 {
 	return (float)self < other;
 }
 
 template <typename T>
-bool operator >(half self, T other)
+inline bool operator >(half self, T other)
 {
 	return (float)self > other;
 }
 
 template <typename T>
-bool operator ==(half self, T other)
+inline bool operator ==(half self, T other)
 {
 	return (float)self == other;
 }
 
 template <typename T>
-bool operator <(T self, half other)
+inline bool operator <(T self, half other)
 {
 	return self < (float)other;
 }
 
 template <typename T>
-bool operator >(T self, half other)
+inline bool operator >(T self, half other)
 {
 	return self > (float)other;
 }
 
 template <typename T>
-bool operator ==(T self, half other)
+inline bool operator ==(T self, half other)
 {
 	return self == (float)other;
 }
 
 // Composed campersion operators
 
-bool operator !=(half self, half other)
+inline bool operator !=(half self, half other)
 {
 	return !(self == other);
 }
 
-bool operator >=(half self, half other)
+inline bool operator >=(half self, half other)
 {
 	return self == other || self > other;
 }
 
-bool operator <=(half self, half other)
+inline bool operator <=(half self, half other)
 {
 	return self == other || self < other;
 }
 
 template <typename T>
-bool operator !=(T self, half other)
+inline bool operator !=(T self, half other)
 {
 	return !(self == other);
 }
 
 template <typename T>
-bool operator >=(T self, half other)
+inline bool operator >=(T self, half other)
 {
 	return self == other || self > other;
 }
 
 template <typename T>
-bool operator <=(T self, half other)
+inline bool operator <=(T self, half other)
 {
 	return self == other || self < other;
 }
 
 template <typename T>
-bool operator !=(half self, T other)
+inline bool operator !=(half self, T other)
 {
 	return !(self == other);
 }
 
 template <typename T>
-bool operator >=(half self, T other)
+inline bool operator >=(half self, T other)
 {
 	return self == other || self > other;
 }
 
 template <typename T>
-bool operator <=(half self, T other)
+inline bool operator <=(half self, T other)
 {
 	return self == other || self < other;
 }
