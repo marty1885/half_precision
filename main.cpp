@@ -4,8 +4,8 @@
 
 int main()
 {
-	half a;
-	half b=2.2;
+	half_precision::half a;
+	half_precision::half b=2.2;
 
 	std::cout << std::exp(b) << std::endl;
 }

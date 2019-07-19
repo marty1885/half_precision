@@ -6,6 +6,9 @@
 #include <numeric>
 #include <functional>
 
+namespace half_precision
+{
+
 struct half
 {
 
@@ -241,4 +244,6 @@ template <typename T>
 bool operator <=(half self, T other)
 {
 	return self == other || self < other;
+}
+
 }
