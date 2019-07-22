@@ -70,6 +70,30 @@ inline half operator +(half self)
 	return self;
 }
 
+inline half operator+=(half& self, half other)
+{
+	self = self + other;
+	return self;
+}
+
+inline half operator-=(half& self, half other)
+{
+	self = self + other;
+	return self;
+}
+
+inline half operator*=(half& self, half other)
+{
+	self = self * other;
+	return self;
+}
+
+inline half operator/=(half& self, half other)
+{
+	self = self / other;
+	return self;
+}
+
 // Binary operations
 
 inline auto operator +(half self, half other)
@@ -244,6 +268,34 @@ template <typename T>
 inline bool operator <=(half self, T other)
 {
 	return self == other || self < other;
+}
+
+template <typename T>
+inline half operator+=(half& self, T other)
+{
+	self = self + other;
+	return self;
+}
+
+template <typename T>
+inline half operator-=(half& self, T other)
+{
+	self = self + other;
+	return self;
+}
+
+template <typename T>
+inline half operator*=(half& self, T other)
+{
+	self = self * other;
+	return self;
+}
+
+template <typename T>
+inline half operator/=(half& self, T other)
+{
+	self = self / other;
+	return self;
 }
 
 }
